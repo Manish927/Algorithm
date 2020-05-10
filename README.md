@@ -10,3 +10,4 @@ Solutions are available in C++17 and Java
 |Sort Characters By Frequency|Leetcode 451|
 |Majority Element|Leetcode 169|
 |Cousins in Binary Tree|Leetcode 993|
+|Spiral Matrix|Leetcode 54|
