@@ -12,3 +12,4 @@ Solutions are available in C++17 and Java
 |Cousins in Binary Tree|Leetcode 993|
 |Spiral Matrix|Leetcode 54|
 |Binary Tree Inorder Traversal|Leetcode 94|
+|Longest Increasing Path in a Matrix|Leetcode 329|
