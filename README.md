@@ -14,3 +14,4 @@ Solutions are available in C++17 and Java
 |Binary Tree Inorder Traversal|Leetcode 94|
 |Longest Increasing Path in a Matrix|Leetcode 329|
 |Flood Fill|Leetcode 733|
+|Find the town judge| Leetcode 997|
