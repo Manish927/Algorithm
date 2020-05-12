@@ -3,15 +3,15 @@ Never Ending Leetcode Q's
 -----------------------------------------
 Solutions are available in C++17 and Java
 -----------------------------------------
-|Leetcode Description|Leetcode Q Number|
+|Leetcode Question Description|#|
 |:-------------------|----------------:|
-|Next Permutation|Leetcode 31|
-|LRU Cache|Leetcode 146|
-|Sort Characters By Frequency|Leetcode 451|
-|Majority Element|Leetcode 169|
-|Cousins in Binary Tree|Leetcode 993|
-|Spiral Matrix|Leetcode 54|
-|Binary Tree Inorder Traversal|Leetcode 94|
-|Longest Increasing Path in a Matrix|Leetcode 329|
-|Flood Fill|Leetcode 733|
-|Find the town judge| Leetcode 997|
+|Next Permutation|31|
+|LRU Cache|146|
+|Sort Characters By Frequency|451|
+|Majority Element|169|
+|Cousins in Binary Tree|993|
+|Spiral Matrix|54|
+|Binary Tree Inorder Traversal|94|
+|Longest Increasing Path in a Matrix|329|
+|Flood Fill|733|
+|Find the town judge|997|
