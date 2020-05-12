@@ -12,6 +12,6 @@ Solutions are available in C++17 and Java
 |Cousins in Binary Tree|993|Depth First Search|
 |Spiral Matrix|54|Single pass approach|
 |Binary Tree Inorder Traversal|94|Iterating using Stack|
-|Longest Increasing Path in a Matrix|329|Topological Sort|
-|Flood Fill|733|Depth First Search|
+|Longest Increasing Path in a Matrix|329|Topological Sort (matrix)|
+|Flood Fill|733|Depth First Search (matrix)|
 |Find the town judge|997|Single pass approach|
