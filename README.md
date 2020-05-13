@@ -15,3 +15,4 @@ Solutions are available in C++17 and Java
 |Longest Increasing Path in a Matrix|329|Topological Sort (matrix)|
 |Flood Fill|733|Depth First Search (matrix)|
 |Find the town judge|997|Single pass approach|
+|Remove K Digits|402|Stack approach|
