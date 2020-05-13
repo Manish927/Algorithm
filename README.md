@@ -16,3 +16,4 @@ Solutions are available in C++17 and Java
 |Flood Fill|733|Depth First Search (matrix)|
 |Find the town judge|997|Single pass approach|
 |Remove K Digits|402|Stack approach|
+|Search in Rotated Sorted Array|33|
