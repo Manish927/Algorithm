@@ -18,3 +18,4 @@ Solutions are available in C++17 and Java
 |Remove K Digits|402|Stack approach|
 |Search in Rotated Sorted Array|33|Binary Search|
 |Merge Sorted Array|88|iterate in place merge|
+| Implement Trie (Prefix Tree)|208|Trie tree|
