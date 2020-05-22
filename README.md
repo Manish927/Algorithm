@@ -21,3 +21,4 @@ Solutions are available in C++17 and Java
 |Implement Trie (Prefix Tree)|208|Trie tree|
 |Kth Smallest Element in a BST|230|Iteration through stack|
 |Online Stock Span|901|Iteration using weighted stack|
+|Permutation in a string|567|Sliding window|
