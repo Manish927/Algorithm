@@ -20,3 +20,4 @@ Solutions are available in C++17 and Java
 |Merge Sorted Array|88|iterate in place merge|
 |Implement Trie (Prefix Tree)|208|Trie tree|
 |Kth Smallest Element in a BST|230|Iteration through stack|
+|Online Stock Span|901|Iteration using weighted stack|
