@@ -23,4 +23,5 @@ Solutions are available in C++17 and Java
 |Online Stock Span|901|Iteration using weighted stack|
 |Permutation in a string|567|Sliding window|
 |Convert Sorted List to Binary Search Tree|109|recursive in-order|
-|Top K Frequent Elements|347|Max Heap|
+|Top K Frequent Elements|347|Min Heap|
+|Interval List Intersections|986|merge intervals|
