@@ -22,3 +22,5 @@ Solutions are available in C++17 and Java
 |Kth Smallest Element in a BST|230|Iteration through stack|
 |Online Stock Span|901|Iteration using weighted stack|
 |Permutation in a string|567|Sliding window|
+|Convert Sorted List to Binary Search Tree|109|recursive in-order|
+|Top K Frequent Elements|347|Max Heap|
