@@ -25,3 +25,4 @@ Solutions are available in C++17 and Java
 |Convert Sorted List to Binary Search Tree|109|recursive in-order|
 |Top K Frequent Elements|347|Min Heap|
 |Interval List Intersections|986|merge intervals|
+|Construct Binary Search Tree from Preorder Traversal|1008|recursive|
