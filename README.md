@@ -26,4 +26,4 @@ Solutions are available in C++17 and Java
 |Top K Frequent Elements|347|Min Heap|
 |Interval List Intersections|986|merge intervals|
 |Construct Binary Search Tree from Preorder Traversal|1008|recursive|
-|Find Largest Value in Each Tree Row|515|Stack|
+|Find Largest Value in Each Tree Row|515|Queue|
