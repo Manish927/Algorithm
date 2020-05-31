@@ -27,3 +27,4 @@ Solutions are available in C++17 and Java
 |Interval List Intersections|986|merge intervals|
 |Construct Binary Search Tree from Preorder Traversal|1008|recursive|
 |Find Largest Value in Each Tree Row|515|Queue|
+|Edit Distance|72|Dynamic Programming|
