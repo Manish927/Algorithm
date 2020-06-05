@@ -28,3 +28,4 @@ Solutions are available in C++17 and Java
 |Construct Binary Search Tree from Preorder Traversal|1008|recursive|
 |Find Largest Value in Each Tree Row|515|Queue|
 |Edit Distance|72|Dynamic Programming|
+|Longest Increasing Subsequence|300|Dynamic Programming with Binary Search|
