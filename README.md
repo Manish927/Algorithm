@@ -29,3 +29,4 @@ Solutions are available in C++17 and Java
 |Find Largest Value in Each Tree Row|515|Queue|
 |Edit Distance|72|Dynamic Programming|
 |Longest Increasing Subsequence|300|Dynamic Programming with Binary Search|
+|Meetings rooms II|253|Min Heap|
