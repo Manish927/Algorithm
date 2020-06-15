@@ -30,3 +30,4 @@ Solutions are available in C++17 and Java
 |Edit Distance|72|Dynamic Programming|
 |Longest Increasing Subsequence|300|Dynamic Programming with Binary Search|
 |Meetings rooms II|253|Min Heap|
+|Cheapest Flights Within K Stops|787|BFS|
