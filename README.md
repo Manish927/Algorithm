@@ -32,3 +32,4 @@ Solutions are available in C++17 and Java
 |Meetings rooms II|253|Min Heap|
 |Cheapest Flights Within K Stops|787|BFS|
 |Snapshot Array|1146|Array with binary search|
+|Serialize and Deserialize Binary Tree|297|Queue|
