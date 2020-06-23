@@ -9,27 +9,27 @@ Solutions are available in C++17 and Java
 |LRU Cache|[146](LC146.java)|Dqueue|
 |Sort Characters By Frequency|[451](LC451.cpp)|Single pass approach|
 |Majority Element|[169](LC169.cpp)|Single pass approach|
-|Cousins in Binary Tree|993|Depth First Search|
-|Spiral Matrix|54|Single pass approach|
-|Binary Tree Inorder Traversal|94|Iterating using Stack|
-|Longest Increasing Path in a Matrix|329|Topological Sort (matrix)|
-|Flood Fill|733|Depth First Search (matrix)|
-|Find the town judge|997|Single pass approach|
-|Remove K Digits|402|Stack approach|
-|Search in Rotated Sorted Array|33|Binary Search|
-|Merge Sorted Array|88|iterate in place merge|
-|Implement Trie (Prefix Tree)|208|Trie tree|
-|Kth Smallest Element in a BST|230|Iteration through stack|
-|Online Stock Span|901|Iteration using weighted stack|
-|Permutation in a string|567|Sliding window|
-|Convert Sorted List to Binary Search Tree|109|recursive in-order|
-|Top K Frequent Elements|347|Min Heap|
-|Interval List Intersections|986|merge intervals|
-|Construct Binary Search Tree from Preorder Traversal|1008|recursive|
-|Find Largest Value in Each Tree Row|515|Queue|
-|Edit Distance|72|Dynamic Programming|
-|Longest Increasing Subsequence|300|Dynamic Programming with Binary Search|
-|Meetings rooms II|253|Min Heap|
-|Cheapest Flights Within K Stops|787|BFS|
-|Snapshot Array|1146|Array with binary search|
-|Serialize and Deserialize Binary Tree|297|Queue|
+|Cousins in Binary Tree|[993](LC993.java)|Depth First Search|
+|Spiral Matrix|[54](LC54.cpp)|Single pass approach|
+|Binary Tree Inorder Traversal|[94](LC94.java)|Iterating using Stack|
+|Longest Increasing Path in a Matrix|[329](LC329.cpp)|Topological Sort (matrix)|
+|Flood Fill|[733](LC733.java)|Depth First Search (matrix)|
+|Find the town judge|[997](LC997.cpp)|Single pass approach|
+|Remove K Digits|[402](LC402.cpp)|Stack approach|
+|Search in Rotated Sorted Array|[33](LC33.java)|Binary Search|
+|Merge Sorted Array|[88](LC88.cpp)|iterate in place merge|
+|Implement Trie (Prefix Tree)|[208](LC208.java)|Trie tree|
+|Kth Smallest Element in a BST|[230](LC230.java)|Iteration through stack|
+|Online Stock Span|[901](LC901.java)|Iteration using weighted stack|
+|Permutation in a string|[567](LC567.java)|Sliding window|
+|Convert Sorted List to Binary Search Tree|[109](LC109.java)|recursive in-order|
+|Top K Frequent Elements|[347](LC347.cpp)|Min Heap|
+|Interval List Intersections|[986](LC986.java)|merge intervals|
+|Construct Binary Search Tree from Preorder Traversal|[1008](LC1008.java)|recursive|
+|Find Largest Value in Each Tree Row|[515](LC515.cpp)|Queue|
+|Edit Distance|[72](LC72.cpp)|Dynamic Programming|
+|Longest Increasing Subsequence|[300](LC300.cpp)|Dynamic Programming with Binary Search|
+|Meetings rooms II|[253](LC253.java)|Min Heap|
+|Cheapest Flights Within K Stops|[787](LC787.cpp)|BFS|
+|Snapshot Array|[1146](LC1146.cpp)|Array with binary search|
+|Serialize and Deserialize Binary Tree|[297](LC297.cpp)|Queue|
