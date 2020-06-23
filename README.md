@@ -5,10 +5,10 @@ Solutions are available in C++17 and Java
 -----------------------------------------
 |Leetcode Question Description|#|Algorithm|
 |:-------------------|----------------:|-----:|
-|Next Permutation|31|Single pass approach|
-|LRU Cache|146|Dqueue|
-|Sort Characters By Frequency|451|Single pass approach|
-|Majority Element|169|Single pass approach|
+|Next Permutation|[31](LC31.cpp)|Single pass approach|
+|LRU Cache|[146](LC146.java)|Dqueue|
+|Sort Characters By Frequency|[451](LC451.cpp)|Single pass approach|
+|Majority Element|[169](LC169.cpp)|Single pass approach|
 |Cousins in Binary Tree|993|Depth First Search|
 |Spiral Matrix|54|Single pass approach|
 |Binary Tree Inorder Traversal|94|Iterating using Stack|
