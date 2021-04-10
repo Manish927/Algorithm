@@ -26,46 +26,47 @@ Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is n
 */
 
 class Solution {
-    
-    int rows, cols;
-    vector<vector<int>>dp;
-    int res = 0;
-    
-    void dfs(vector<vector<int>>& matrix, int i, int j, int len, vector<int>&v) 
-    {
-        if (i >= rows || i < 0 || j >= cols || j < 0 || dp[i][j] > len) return;
-        if (v.size() && v.back() >= matrix[i][j]) return;
-        
-        len++;
-        dp[i][j] = max(dp[i][j], len);
-        
-        res = max(res, len);
-        v.push_back(matrix[i][j]);
-        dfs(matrix, i+1, j, len, v);
-        dfs(matrix, i-1, j, len, v);
-        dfs(matrix, i, j+1, len, v);
-        dfs(matrix, i, j-1, len, v);
-        v.pop_back();
-    }
 public:
     int longestIncreasingPath(vector<vector<int>>& matrix) 
     {
-        if (matrix.empty()) return 0;
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         
-        rows = matrix.size();
-        cols = matrix[0].size();
-
-        dp.resize(rows, std::vector<int>(cols, 0));
+        int m = matrix.size();
+        int n = matrix[0].size();
         
-        for (int i = 0; i < rows; i++) 
+        vector<vector<int>> dp(m, vector<int>(n, 0));    // prepare the cache.
+        int maxVal = 0;
+        
+        for (int row = 0; row < m; row++)
         {
-            for (int j = 0; j < cols; j++) 
+            for (int col = 0; col < n; col++)
             {
-                vector<int>v;
-                dfs(matrix, i, j, 0, v);
+                maxVal = max(maxVal, dfs(dp, matrix, row, col, -1));
             }
         }
         
-        return res;
+        return maxVal;
+    }
+    
+    int dfs(vector<vector<int>> &dp, vector<vector<int>>& matrix, int row, int col, int pre)
+    {
+        if (row < 0 || col < 0 || row == matrix.size() || col == matrix[0].size() || pre >= matrix[row][col])
+            return 0;
+        
+        if (dp[row][col])
+            return dp[row][col];
+        
+        int val = matrix[row][col];
+        matrix[row][col] = -1;
+        
+        int left = dfs(dp, matrix, row, col - 1, val);
+        int right = dfs(dp, matrix, row, col + 1, val);
+        int up = dfs(dp, matrix, row - 1, col, val);
+        int down = dfs(dp, matrix, row + 1, col, val);
+        
+        matrix [row][col] = val;
+        
+        return dp[row][col] = max({left, right, up, down}) + 1;
     }
 };
