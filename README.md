@@ -33,3 +33,4 @@ Solutions are available in C++17 and Java
 |Cheapest Flights Within K Stops|[787](LC787.cpp)|BFS|
 |Snapshot Array|[1146](LC1146.cpp)|Array with binary search|
 |Serialize and Deserialize Binary Tree|[297](LC297.cpp)|Queue|
+|Design Circular Queue|[622](LC622.cpp)|array|
