@@ -38,6 +38,30 @@ Note that 'A' and 'a' are treated as two different characters.
 
 */
 
+//Approach 1 of 2 : using Java Stream, Collectors
+class Solution {
+    public String frequencySort(String s) {
+        HashMap<Character, Integer> hashMap = new HashMap<>();
+
+        s.chars().forEach(c -> hashMap.put((char) c, hashMap.getOrDefault((char) c, 0) + 1));
+        StringBuilder sb = new StringBuilder();
+
+        hashMap.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).forEach(e->repeat(e, sb));
+
+        return sb.toString();
+    }
+    
+    public static void repeat(Map.Entry e, StringBuilder sb)
+    {
+        char[] chars = new char[(int) e.getValue()];
+
+        Arrays.fill(chars, (char)e.getKey());
+        sb.append(chars);
+    }
+}
+
+
+//Approach 2 of 2
 class Solution {
     public String frequencySort(String s) {
         HashMap<Character, Integer> hash_map = new HashMap<Character, Integer>();
