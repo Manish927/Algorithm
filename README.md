@@ -35,3 +35,4 @@ Solutions are available in C++17 and Java
 |Serialize and Deserialize Binary Tree|[297](LC297.cpp)|Queue|
 |Design Circular Queue|[622](LC622.cpp)|array|
 |Fibonacci Number|[509](LC509.cpp)|Iterative top down|
+|monotonic-array|[896](LC896.cpp)|Single pass|
