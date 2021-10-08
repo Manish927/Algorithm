@@ -36,3 +36,4 @@ Solutions are available in C++17 and Java
 |Design Circular Queue|[622](LC622.cpp)|array|
 |Fibonacci Number|[509](LC509.cpp)|Iterative top down|
 |monotonic-array|[896](LC896.cpp)|Single pass|
+|Trapping Rain Water|[42](LC42.java)|Dynamic Programming|
