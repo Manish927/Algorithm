@@ -38,3 +38,4 @@ Solutions are available in C++17 and Java
 |monotonic-array|[896](LC896.cpp)|Single pass|
 |Trapping Rain Water|[42](LC42.java)|Dynamic Programming|
 |Reorganize String|[767](LC767.cpp)|max Heap|
+|Redundant Connection|[684](LC684.java)|depth first search|
