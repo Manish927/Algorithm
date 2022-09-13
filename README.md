@@ -39,4 +39,5 @@ Solutions are available in C++17 and Java
 |Trapping Rain Water|[42](LC42.java)|Dynamic Programming|
 |Reorganize String|[767](LC767.cpp)|max Heap|
 |Redundant Connection|[684](LC684.java)|depth first search|
-|Search a 2D Matrix II|[240](LC240.cpp)||
+|Search a 2D Matrix II|[240](LC240.cpp)|binary search|
+|Search 2D Matrix|[74](LC74.java)|binary search|
