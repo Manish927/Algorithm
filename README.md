@@ -42,3 +42,5 @@ Solutions are available in C++17 and Java
 |Search a 2D Matrix II|[240](LC240.cpp)|binary search|
 |Search 2D Matrix|[74](LC74.java)|binary search|
 |Find Distance in a Binary Tree|[1740](LC1740.java)|DFS|
+|Word Search II|[212](LC212.cpp)|trie + backtracking|
+
