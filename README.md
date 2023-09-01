@@ -43,5 +43,6 @@ Solutions are available in C++17 and Java
 |Search 2D Matrix|[74](LC74.java)|binary search|
 |Find Distance in a Binary Tree|[1740](LC1740.java)|DFS|
 |Word Search II|[212](LC212.cpp)|trie + backtracking|
+|Word Search|[79](LC79.java)|depth first search|
 |Delete the Middle Node of a Linked List|[2095](LC2095.cpp)|fast & slow pointer|
 
