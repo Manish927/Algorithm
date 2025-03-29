@@ -2,6 +2,7 @@ from collections import deque
 
 class Graph:
     def __init__(self):
+        # {'A': ['B', 'C'], 'B': ['A', 'E'], 'C': ['A', 'D'], 'D': ['C', 'E'], 'E': ['B', 'D']}
         self.adjacency_list = {}
 
     def add_vertex(self, vertex):
@@ -60,7 +61,7 @@ class Graph:
                     
 
 
-
+# Graph Algorithm, Topological sort, Dijkastra's algorithm, Bellman Ford algorithm, Floyd Warshall Algorithm
 
 graph = Graph()
 graph.add_vertex("A")
@@ -76,5 +77,5 @@ graph.add_edge("C", "D")
 graph.add_edge("D", "E")
 # graph.remove_edge("A", "B")
 print(graph.adjacency_list)
-graph.bfs("A")
+# graph.bfs("A")
 graph.dfs("A")
