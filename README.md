@@ -45,4 +45,6 @@ Solutions are available in C++17 and Java
 |Word Search II|[212](LC212.cpp)|trie + backtracking|
 |Word Search|[79](LC79.java)|depth first search|
 |Delete the Middle Node of a Linked List|[2095](LC2095.cpp)|fast & slow pointer|
+|Count Substrings With K-Frequency Characters|[3325](LC3325.cpp)|Sliding Window|
+
 
