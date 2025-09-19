@@ -8,7 +8,25 @@
    Sample input:
    words = ["diaper", "abc", "test", "cba", "repaid"]
    sample output
-   [["diaper, "repaid"], ["abc", "cba"]]
-
-   
+   [["diaper, "repaid"], ["abc", "cba"]]   
 */
+#include <unordered_set>
+#include <vector>
+
+std::vector<std::pair<string, string>> semordnilap(std::vector<string> words) {
+  unordered_set<string> wordList;
+  vector<vector<string>> result;
+
+  for (string word : words) {
+    string revWord = word;
+    reverse(revWord.begin(), revWord.end());
+
+    if (wordList.find(revWord) != wordList.end()) {
+      result.push_back({word, revWord});
+    }
+    wordList.insert(word);
+      
+  }
+  
+  return result;
+}
