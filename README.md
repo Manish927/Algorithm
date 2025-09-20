@@ -47,4 +47,5 @@ Solutions are available in C++17 and Java
 |Delete the Middle Node of a Linked List|[2095](LC2095.cpp)|fast & slow pointer|
 |Count Substrings With K-Frequency Characters|[3325](LC3325.cpp)|Sliding Window|
 |Palindromes - Semordnilap|[0](LC0.cpp)|iteration|
+|Remove Nth Node From End of list|[19](LC19.cpp)|iteration|
 
