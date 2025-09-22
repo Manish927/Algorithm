@@ -13,3 +13,34 @@ Output: "dcbaefd"
 Explanation: The first occurrence of "d" is at index 3. 
 Reverse the part of word from 0 to 3 (inclusive), the resulting string is "dcbaefd".
 */
+
+
+class Solution {
+    string reversePrefix(string word, char ch) {
+        stack<char> stack;
+        string result;
+
+        int index = 0;
+
+        while (index < word.length()) {
+            stack.push(word[index]);
+
+            if (word[index] == ch) {
+               
+               while (!stack.empty()) { 
+                 result.push_back(stack.top());
+                 stack.pop(); 
+                }
+                index++;
+
+                while(index < word.length()) {
+                    result.push_back(word[index]);
+                    index++;
+                }
+                return result;
+            }
+        index++;
+        }
+    return word;
+    }
+};
