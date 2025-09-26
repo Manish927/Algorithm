@@ -14,3 +14,10 @@ Input: nums = [1]
 Output: 1
 Explanation: The subarray [1] has the largest sum 1.
 */
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        
+    }
+};
