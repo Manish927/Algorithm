@@ -48,6 +48,7 @@ Solutions are available in C++17 and Java
 |Count Substrings With K-Frequency Characters|[3325](LC3325.cpp)|Sliding Window|
 |Palindromes - Semordnilap|[0](LC0.cpp)|iteration|
 |Remove Nth Node From End of list|[19](LC19.cpp)|iteration|
-|Linked List Cycle II|[142](LC142.cpp)|iteration, fast and slow|
+|Linked List Cycle II|[142](LC142.cpp)|iteration, fast and slow pointer|
 |Reverse Prefix of Word|[2000](LC2000.cpp)|stack|
 |Balanced Binary Tree|[110](LC110.cpp)|recursive|
+|Maximum Subarray|[53](LC53.java)|Linear|
