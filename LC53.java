@@ -16,8 +16,16 @@ Explanation: The subarray [1] has the largest sum 1.
 */
 
 class Solution {
-public:
-    int maxSubArray(vector<int>& nums) {
-        
+    public int maxSubArray(int[] A) {
+        int maxGlobal = A[0];
+        int sums[] = new int[A.length];
+        sums[0] = A[0];
+
+        for (int i = 1; i < A.length; i++)
+        {
+            sums[i] = Math.max(A[i], (A[i] + sums[i - 1]));
+            maxGlobal = Math.max(sums[i], maxGlobal);
+        }
+        return maxGlobal;
     }
-};
+}
