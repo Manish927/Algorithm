@@ -52,3 +52,4 @@ Solutions are available in C++17 and Java
 |Reverse Prefix of Word|[2000](LC2000.cpp)|stack|
 |Balanced Binary Tree|[110](LC110.cpp)|recursive|
 |Maximum Subarray|[53](LC53.java)|Linear|
+|Subarray with ZERO sum|[001](GFG001.cpp)|Linear|
