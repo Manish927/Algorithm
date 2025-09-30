@@ -18,3 +18,29 @@ Input: k = 2, prices = [3,2,6,5,0,3]
 Output: 7
 Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-2 = 4. Then buy on day 5 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.
 */
+
+class Solution {
+    public int maxProfit(int k, int[] prices) {
+        int n = prices.length;
+        int[][][] dp = new int[n + 1][2][k + 1];
+
+        for (int ind = n - 1; ind >= 0; ind--) {
+            for (int buy = 0; buy < 2; buy++) {
+                for (int cap = 1; cap <= k; cap++) {
+                    int profit = 0;
+                    if (buy == 1) {
+                        int take = -prices[ind] + dp[ind + 1][0][cap];
+                        int noTake = dp[ind + 1][1][cap];
+                        profit = Math.max(take, noTake);
+                    } else {
+                        int sell = prices[ind] + dp[ind + 1][1][cap - 1];
+                        int noSell = dp[ind + 1][0][cap];
+                        profit = Math.max(sell, noSell);
+                    }
+                    dp[ind][buy][cap] = profit;
+                }
+            }
+        }
+        return dp[0][1][k];
+    }
+}
