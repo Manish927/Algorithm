@@ -45,7 +45,8 @@ public:
 
         Q.push(target);
         seen[target] = 1;
-
+        
+        // step2: find the distance using above parentsMap
         while (!Q.empty() && distance < k) {
 			int sz = Q.size();
             distance++;
