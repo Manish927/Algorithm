@@ -9,3 +9,14 @@ Output: [7,4,1]
 Explanation: The nodes that are a distance 2 from the target node (with value 5) have values 7, 4, and 1.
 
 */
+
+class Solution {
+public:
+    Solution() {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+    }
+
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+    }
+}
