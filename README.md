@@ -55,4 +55,5 @@ Solutions are available in C++17 and Java
 |Subarray with ZERO sum|[001](GFG001.cpp)|Linear|
 |Best time to buy and sell stock|[188](LC188.java)|Dynamic program|
 |All Nodes Distance K in Binary Tree|[863](LC863.cpp)|BFS|
+|All Nodes Distance K from target Value|[863A](LC863A.cpp)|BFS|
 |Vertical Order Traversal of a Binary Tree|[987](LC987.cpp)|BFS|
