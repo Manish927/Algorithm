@@ -84,6 +84,30 @@ public:
 };
 
 
+// Helper to build sample tree and test
+int main() {
+    TreeNode* root = new TreeNode(3);
+    root->left = new TreeNode(5);
+    root->right = new TreeNode(1);
+    root->left->left = new TreeNode(6);
+    root->left->right = new TreeNode(2);
+    root->right->left = new TreeNode(0);
+    root->right->right = new TreeNode(8);
+    root->left->right->left = new TreeNode(7);
+    root->left->right->right = new TreeNode(4);
+
+    TreeNode* target = root->left; // Node with value 5
+    int k = 2;
+
+    vector<int> res = distanceK(root, target, k);
+    for (int val : res) cout << val << " ";
+    cout << endl;
+
+    return 0;
+}
+
+
+
 // Solution 2: in an another way
 
 class Solution {
