@@ -10,6 +10,82 @@ Explanation: The nodes that are a distance 2 from the target node (with value 5)
 
 */
 
+// Program 1, neat code
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    Solution() {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+    }
+
+    void markParents(TreeNode* root, unordered_map<TreeNode*, TreeNode*>& parents) {
+        std::queue<TreeNode*> Q;
+        Q.push(root);
+
+        while(!Q.empty()) {
+
+            TreeNode* current = Q.front();
+            Q.pop();
+
+            if (current->left) {
+                parents[current->left] = current;
+                Q.push(current->left);
+            }
+
+            if (current->right) {
+                parents[current->right] = current;
+                Q.push(current->right);
+            }
+        }
+    }
+
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+        std::vector<int> result;
+        std::unordered_map<TreeNode*, TreeNode*> parents;
+        
+        markParents(root, parents);
+        std::unordered_set<TreeNode *> visited;
+        std::queue<std::pair<TreeNode *, int>> Q;
+        Q.push({target, 0});
+        visited.insert(target);
+
+        while(!Q.empty()) {
+            TreeNode* node = Q.front().first;
+            int dist = Q.front().second;
+            Q.pop();
+
+            if (dist == k) {
+                result.push_back(node->val);
+            }
+
+            if (dist > k)
+                break;
+
+            for (TreeNode* neighbour : {node->left, node->right, parents[node]}) {
+                if (neighbour && visited.find(neighbour) == visited.end()) {
+                    visited.insert(neighbour);
+                    Q.push({neighbour, dist + 1});
+                }
+            }
+        }
+        
+        return result;
+
+    }
+};
+
+
+// Solution 2: in an another way
+
 class Solution {
 public:
     Solution() {
