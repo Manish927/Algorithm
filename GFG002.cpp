@@ -42,3 +42,11 @@ std::vector<int> nextGreaterElement(vector<int> nums) {
     return result;
 }
 
+int main() {
+    vector<int> arr = {1, 3, 2, 4};
+    vector<int> res = nextGreaterElement(arr);
+    for (int x : res) {
+        cout << x << " ";
+    }
+    return 0;
+}
