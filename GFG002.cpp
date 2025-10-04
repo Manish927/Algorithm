@@ -20,3 +20,25 @@ Output: [-1, -1, -1, -1]
 Explanation: There is no next greater element for any of the elements in the array, so all are -1.
 */
 
+#include <vector>
+#include <stack>
+
+std::vector<int> nextGreaterElement(vector<int> nums) {
+    std::vector<int> result(nums.size(), -1);   // Initialize result with -1
+    std::stack<int> s;                // Store indexes of elements
+
+    for (int i = 0; i < nums.size() * 2; ++i) {
+      int circularIdx = i % nums.size();
+      
+        while (!s.empty() && nums[s.top()] < nums[circularIdx] )
+        {
+            int top = s.top();
+            s.pop();
+            result[top] = nums[circularIdx];
+        }
+        
+        s.push(circularIdx);
+    }
+    return result;
+}
+
