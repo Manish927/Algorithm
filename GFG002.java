@@ -20,3 +20,40 @@ Output: [-1, -1, -1, -1]
 Explanation: There is no next greater element for any of the elements in the array, so all are -1.
 */
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
+
+public class Main {
+    
+    public List<Integer> nextGreaterElements(int[] nums) {
+        int n = nums.length;
+        List<Integer> result = new ArrayList<>(Collections.nCopies(n, -1));
+        Stack<Integer> stack = new Stack<>();
+
+        for (int i = 0; i < 2 * n; i++) {
+            int circularIdx = i % n;
+
+            while (!stack.isEmpty() && nums[stack.peek()] < nums[circularIdx]) { 
+                result.set(stack.peek(), nums[circularIdx]);
+                stack.pop();
+            }
+            
+            stack.push(circularIdx);
+            
+        }
+
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+
+        Main main = new Main();
+        int[] nums = {2, 5, -3, -4, 6, 7, 2};
+        List<Integer> result = main.nextGreaterElements(nums);
+        System.out.println(result); // Output: [5, 6, 6, 6, 7, -1, 5]
+    }
+
+}
