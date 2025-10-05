@@ -19,3 +19,32 @@ Explanation: There is no subarray with sum 2.
 
 */
 
+class Solution {
+  public:
+    vector<int> subarraySum(vector<int> &arr, int target) {
+        // code here
+        int left = 0, right = 0;
+        std::vector<int> result;
+        int sum = 0;
+        
+        while (right < arr.size()) {
+           
+           sum +=  arr[right];
+           
+           while (sum > target && left <= right) {
+               sum -= arr[left];
+               left++;
+           }
+           
+           if (sum == target) {
+               result = {left + 1, right + 1};
+               return result;
+           }
+           
+           right++;
+        }
+        
+        return {-1};
+    }
+};
+
