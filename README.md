@@ -58,5 +58,6 @@ Solutions are available in C++17 and Java
 |All Nodes Distance K from target Value|[863A](LC863A.cpp)|BFS|
 |Vertical Order Traversal of a Binary Tree|[987](LC987.cpp)|BFS|
 |Remove Duplicates from Sorted List II|[82](LC82.cpp)|Linear|
+|Remove Duplicates Sorted Array|[82A](GFG82A.cpp)|Linear|
 |Next Greater Element|[002](GFG002.cpp)|Linear|
 |Indexes of Subarray Sum|[003](GFG003.cpp)|Sliding Window|
