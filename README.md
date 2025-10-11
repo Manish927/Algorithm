@@ -62,3 +62,4 @@ Solutions are available in C++17 and Java
 |Remove Duplicates Sorted Array|[82A](GFG82A.cpp)|Linear|
 |Next Greater Element|[002](GFG002.cpp)|Linear|
 |Indexes of Subarray Sum|[003](GFG003.cpp)|Sliding Window|
+|Implementing Stack Using Queue|[225](LC225.cpp)|using 1 queue and 2 queue|
