@@ -108,3 +108,21 @@ public:
         return q1.size();
     }
 };
+
+
+// Driver code
+int main() {
+    MyStack st;
+    st.push(1);
+    st.push(2);
+    st.push(3);
+
+    cout << st.top() << endl;
+    st.pop();
+    cout << st.top() << endl;
+    st.pop();
+    cout << st.top() << endl;
+
+    cout << st.size() << endl;
+    return 0;
+}
