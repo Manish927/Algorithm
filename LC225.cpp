@@ -60,3 +60,51 @@ public:
         return q.empty();
     }
 };
+
+
+// Using Two Queue - Push in O(1) and Pop() in O(n)
+class MyStack {
+    queue<int> q1, q2;
+
+public:
+
+    // insert element
+    void push(int x) {
+        q1.push(x);
+    }
+
+    // remove top element
+    void pop() {
+        if (q1.empty())
+            return;
+
+        while (q1.size() != 1) {
+            q2.push(q1.front());
+            q1.pop();
+        }
+        q1.pop();
+        swap(q1, q2);
+    }
+
+    // return top element
+    int top() {
+        if (q1.empty())
+            return -1;
+
+        while (q1.size() != 1) {
+            q2.push(q1.front());
+            q1.pop();
+        }
+        
+        int temp = q1.front();
+        q1.pop();
+        q2.push(temp);
+        swap(q1, q2);
+        return temp;
+    }
+
+    // return current size
+    int size() {
+        return q1.size();
+    }
+};
