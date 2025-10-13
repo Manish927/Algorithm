@@ -26,8 +26,11 @@ cache.get(4);       // returns 4*/
  */
 
 class LRUCache {
-    
+    // Store key-value pairs in a doubly linked list
     std::list<pair<int, int>> cache;
+
+    // Store key and an iterator to its position in the list.
+    // unordered_map<key, list<pair<key, value>>::iterator>
     typedef unordered_map<int, list<pair<int, int>>::iterator> HashMapT;
     HashMapT hash_map;
     typedef HashMapT::iterator IteratorT;
