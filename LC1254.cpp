@@ -31,6 +31,34 @@ Input: grid = [[1,1,1,1,1,1,1],
 Output: 2
  */
 
+/*
+Algorithm Breakdown
+
+The Breadth-First Search (BFS) approach uses a queue to explore the grid level by level.
+1. Outer Loop: The closedIsland function iterates through every cell in the grid. 
+    When it finds an unvisited land cell (grid[r][c] == 0), it starts the bfs_is_closed 
+    process to evaluate that entire connected land mass.
+2. Initialization: The bfs_is_closed function:
+    * Initializes a queue (q) to hold the coordinates of cells to visit.
+    * Sets a touches_border flag to false.
+    * Enqueues the starting cell and immediately marks it as visited (by changing grid[r][c] from 0 to 1).
+3. Traversal (The Queue):
+    * While the queue is not empty, it dequeues a cell and checks its four neighbors.
+    * Boundary Check: For each neighbor $(nr, nc)$:
+        * If $(nr, nc)$ is out of the grid boundaries, it means the land mass extends to the edge, 
+            so we set touches_border = true. We continue to the next neighbor.
+        * If $(nr, nc)$ is unvisited land (grid[nr][nc] == 0):
+            * We check if this cell is on the border (e.g., $nr = 0$ or $nr = R-1$). If it is, we also set touches_border = true.
+            * We mark the cell as visited (grid[nr][nc] = 1) and enqueue it for later exploration.
+4. Result: Once the queue is empty, all connected land cells have been visited. The function returns !touches_border. 
+    If the flag is true (it touched the border), the function returns false (not a closed island). 
+    If the flag is false (it never touched the border), the function returns true (it is a closed island).
+5. Counting: The closedIsland function increments the count only when bfs_is_closed returns true.
+*/
+
+
+
+
 #include <vector>
 #include <queue>
 #include <iostream>
