@@ -30,3 +30,11 @@ Input: grid = [[1,1,1,1,1,1,1],
                [1,1,1,1,1,1,1]]
 Output: 2
  */
+
+
+class Solution {
+public:
+    int closedIsland(vector<vector<int>>& grid) {
+        
+    }
+};
