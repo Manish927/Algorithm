@@ -31,10 +31,104 @@ Input: grid = [[1,1,1,1,1,1,1],
 Output: 2
  */
 
+#include <vector>
+#include <queue>
+#include <iostream>
+
+using namespace std;
+
 
 class Solution {
+    const int directions[4][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+    /**
+    * @brief Performs BFS to check if a land mass starting at (r, c) is a closed island.
+    * * @param grid The 2D grid where '0' is land and '1' is water/visited.
+    * @param start_r Starting row.
+    * @param start_c Starting column.
+    * @return true if the island is closed (does NOT touch the border), false otherwise.
+    */
+    bool bfs_is_closed(vector<vector<int>>& grid, int start_r, int start_c) {
+
+        int R = grid.size();
+        int C = grid[0].size();
+        
+        // A flag to track if any part of the island touches the border
+        bool touches_border = false;
+
+        // The queue stores pairs of {row, column} for BFS traversal
+        queue<pair<int, int>> q;
+
+        // Start BFS from the given cell
+        q.push({start_r, start_c});
+        // Mark the starting cell as visited (change '0' to '1')
+        grid[start_r][start_c] = 1; 
+
+        // Check if the starting cell itself is on the border
+        if (start_r == 0 || start_r == R - 1 || start_c == 0 || start_c == C - 1) {
+            touches_border = true;
+        }
+
+        while (!q.empty()) {
+            pair<int, int> current = q.front();
+            q.pop();
+            int r = current.first;
+            int c = current.second;
+
+            // Explore neighbors
+            for (int i = 0; i < 4; ++i) {
+                int nr = r + directions[i][0];
+                int nc = c + directions[i][1];
+
+                // 1. Check if the neighbor is out of bounds
+                if (nr < 0 || nr >= R || nc < 0 || nc >= C) {
+                    // If a neighbor is out of bounds, the island touches the border
+                    touches_border = true;
+                    continue; // Move to the next neighbor
+                }
+
+                // 2. Check if the neighbor is unvisited land ('0')
+                if (grid[nr][nc] == 0) {
+                    // Mark as visited and enqueue
+                    grid[nr][nc] = 1; 
+                    q.push({nr, nc});
+
+                    // 3. Check if the *newly added* neighbor is on the border
+                    if (nr == 0 || nr == R - 1 || nc == 0 || nc == C - 1) {
+                        touches_border = true;
+                    }
+                }
+                // If the neighbor is water ('1'), we just skip it (it's the 'wall')
+            }
+        }
+        
+        // A closed island is one that DID NOT touch the border
+        return !touches_border;
+    }
+
 public:
     int closedIsland(vector<vector<int>>& grid) {
-        
+        if (grid.empty() || grid[0].empty()) {
+            return 0;
+        }
+
+        int R = grid.size();
+        int C = grid[0].size();
+        int closed_island_count = 0;
+    
+        // Iterate through every cell
+        for (int r = 0; r < R; ++r) {
+            for (int c = 0; c < C; ++c) {
+                // Start BFS only on unvisited land ('0')
+                if (grid[r][c] == 0) {
+                    // If BFS confirms the island is closed, increment the count
+                    if (bfs_is_closed(grid, r, c)) {
+                        closed_island_count++;
+                    }
+                }
+            }
+        }
+
+    return closed_island_count;
     }
 };
