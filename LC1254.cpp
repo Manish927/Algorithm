@@ -132,3 +132,44 @@ public:
     return closed_island_count;
     }
 };
+
+
+int main() {
+
+    Solution sol;
+    // Example 1: 1 closed island
+    vector<vector<int>> grid1 = {
+        {1,1,1,1,1,1,1,0},
+        {1,0,0,0,0,1,1,0},
+        {1,0,1,0,1,1,1,0},
+        {1,0,0,0,0,1,0,1},
+        {1,1,1,1,1,1,1,1}
+    };
+    cout << "Closed islands in grid1: " << sol.closedIsland(grid1) << endl; // Expected: 1
+
+    // Example 2: 2 closed islands
+    vector<vector<int>> grid2 = {
+        {0,0,1,1,0,1,0,0,1,0},
+        {1,1,0,1,1,0,1,1,1,0},
+        {1,0,1,1,1,0,0,1,1,0},
+        {0,1,1,0,0,0,0,1,0,1},
+        {0,0,0,0,0,0,1,1,1,0},
+        {0,1,0,1,0,1,0,1,1,1},
+        {1,0,1,0,1,1,0,0,0,1},
+        {1,1,1,1,1,1,0,0,0,0},
+        {1,1,1,0,0,1,0,1,0,1},
+        {1,1,1,0,1,1,1,0,0,1}
+    };
+    cout << "Closed islands in grid2: " << sol.closedIsland(grid2) << endl; // Expected: 2
+
+    // Example 3: 0 closed islands (all touch border)
+    vector<vector<int>> grid3 = {
+        {0,0,1,1},
+        {0,1,1,0},
+        {1,1,0,0},
+        {1,0,0,1}
+    };
+    cout << "Closed islands in grid3: " << sol.closedIsland(grid3) << endl; // Expected: 0
+
+    return 0;
+}
