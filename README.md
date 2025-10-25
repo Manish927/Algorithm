@@ -63,3 +63,4 @@ Solutions are available in C++17 and Java
 |Next Greater Element|[002](GFG002.cpp)|Linear|
 |Indexes of Subarray Sum|[003](GFG003.cpp)|Sliding Window|
 |Implementing Stack Using Queue|[225](LC225.cpp)|using 1 queue and 2 queue|
+|Number of Closed Islands|[1254](LC1254.cpp)|BFS traversal|
