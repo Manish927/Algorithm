@@ -11,27 +11,35 @@ Example 1:
 
 */
 
+#include <vector>
+#include <string>
+#include <unordered_map>
+#include <memory>
+
 class Solution {
     
-    class Node {
-        public: 
-            unordered_map<char, Node*> children;
-            std::string word;
+    struct Node { 
+        // Use unique_ptr to automatically prevent memory leaks
+        std::unordered_map<char, std::unique_ptr<Node>> children;
+        std::string word = "";
     };
     
-    Node* trie;
+    std::unique_ptr<Node> trie;
         
-    std::vector<std::vector<int>> directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    // Using a std::pair array with structured bindings makes direction code readable
+    const std::vector<std::pair<int, int>> directions = {
+        {-1, 0}, {1, 0}, {0, -1}, {0, 1}
+    };
     
     
     void dfs(std::vector<string>& result, std::vector<std::vector<char>>& board, int row, int col, Node* trieNode) {
         
         char ch = board[row][col];
-        Node* next = trieNode->children[ch];
+        Node* next = trieNode->children[ch].get();
         
-        if (next->word != "") {
-            result.push_back(next->word);
-            next->word = "";
+        if (!next->word.empty()) {
+            result.push_back(std::move(next->word));
+            next->word.clear();
         }
         
         if (next->children.empty()) {
@@ -41,15 +49,15 @@ class Solution {
         
         board[row][col] = '#'; //ensuring we have visited
         
-        for (const auto& dir : directions) {
-            int r = row + dir[0];
-            int c = col + dir[1];
+        for (const auto& [dr, dc] : directions) {
+            int r = row + dr;
+            int c = col + dc;
             
             if (r < 0 || r >= board.size() || c < 0 || c >= board[0].size()) {
                 continue;
             }
             
-            if (next->children.count(board[r][c])) {
+            if (next->children.contains(board[r][c])) {
                 dfs(result, board, r, c, next);
             }
         }
@@ -59,38 +67,32 @@ class Solution {
     
     public:
     
-    Solution() : trie(new Node()) {}
+    Solution() : trie(std::make_unique<Node>()) {}
     
-    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
+    std::vector<std::string> findWords(vector<vector<char>>& board, vector<string>& words) {
         // constructing a trie using list of input words
         
         for (const auto& word : words) {
-            Node* curr = trie;
+            Node* curr = trie.get();
             
-            for (auto const& c : word) {
-                if (!curr->children.count(c)) {
-                    curr->children.emplace(c, new Node());
+            for (const char c : word) {
+                if (!curr->children.contains(c)) {
+                    curr->children[c] = std::make_unique<Node>();
                 }
-                
-                curr= curr->children[c];
+                curr= curr->children[c].get();
             }
             curr->word = word;
         }
         
-        
-        //tracking trie untill we meet a completed word
+       //tracking trie untill we meet a completed word
+        std::vector<std::string> result;
         int m = board.size();
         int n = board[0].size();
         
-        std::vector<std::string> result;
-        
-        
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                
-                // only tracking the character from trie
-                if (trie->children.count(board[i][j])) {
-                    dfs(result, board, i, j , trie);
+                if (trie->children.contains(board[i][j])) {
+                    dfs(result, board, i, j , trie.get());
                 }
             }
         }
