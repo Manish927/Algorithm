@@ -143,3 +143,124 @@ int main() {
     return 0;
 }
 
+
+// Program 2: which submit a task and returns values
+
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+#include <functional>
+#include <atomic>
+#include <future>
+#include <memory>
+#include <stdexcept>
+
+class ThreadPool {
+private:
+    std::vector<std::thread> workers;
+    std::queue<std::function<void()>> tasks;
+    std::mutex mtx;
+    std::condition_variable cv;
+    std::atomic<bool> stop;
+
+    void workerThread() {
+        while (true) {
+            std::function<void()> task;
+            {
+                std::unique_lock<std::mutex> lock(this->mtx);
+                this->cv.wait(lock, [this]() { return this->stop || !this->tasks.empty(); });
+
+                // If stopping and no tasks are left, exit gracefully
+                if (this->stop && this->tasks.empty()) {
+                    return;
+                }
+
+                task = std::move(this->tasks.front());
+                this->tasks.pop();
+            }
+            task(); // Execute task outside the lock
+        }
+    }
+
+public:
+    explicit ThreadPool(size_t numThreads) : stop(false) {
+        for (size_t i = 0; i < numThreads; ++i) {
+            workers.emplace_back([this]() { workerThread(); });
+        }
+    }
+
+    // Submit a task and receive a std::future containing the result
+    template <typename F, typename... Args>
+    auto submit(F&& func, Args&&... args) 
+        -> std::future<typename std::result_of<F(Args...)>::type> {
+        
+        using return_type = typename std::result_of<F(Args...)>::type;
+
+        // Use packaged_task to wrap our callable and its return channel
+        auto task = std::make_shared<std::packaged_task<return_type()>>(
+            std::bind(std::forward<F>(func), std::forward<Args>(args)...)
+        );
+        
+        std::future<return_type> res = task->get_future();
+        {
+            std::lock_guard<std::mutex> lock(mtx);
+
+            // Don't allow submission after pool destruction has started
+            if (stop) {
+                throw std::runtime_error("Submission attempted on stopped ThreadPool");
+            }
+
+            // C++14 generalized lambda capture to move the shared_ptr into the queue
+            tasks.emplace([task]() { (*task)(); });
+        }
+        cv.notify_one();
+        return res;
+    }
+
+    ~ThreadPool() {
+        {
+            std::lock_guard<std::mutex> lock(mtx);
+            stop = true;
+        }
+        cv.notify_all();
+        for (std::thread& worker : workers) {
+            if (worker.joinable()) {
+                worker.join();
+            }
+        }
+    }
+};
+
+// Thread-safe console printing utility
+std::mutex cout_mtx;
+void safe_print(const std::string& msg) {
+    std::lock_guard<std::mutex> lock(cout_mtx);
+    std::cout << msg << std::endl;
+}
+
+int main() {
+    ThreadPool pool(4);
+    std::vector<std::future<int>> results;
+
+    // 1. Submitting tasks that return values
+    for (int i = 1; i <= 10; ++i) {
+        results.emplace_back(
+            pool.submit([i]() {
+                safe_print("Task " + std::to_string(i) + " processing on thread " + 
+                           std::to_string(std::hash<std::thread::id>{}(std::this_thread::get_id())));
+                std::this_thread::sleep_for(std::chrono::milliseconds(200));
+                return i * i; // Return a value back to main!
+            })
+        );
+    }
+
+    // 2. Gather results (this naturally blocks main until they are ready)
+    for (size_t i = 0; i < results.size(); ++i) {
+        safe_print("Result of task " + std::to_string(i + 1) + " status: " + std::to_string(results[i].get()));
+    }
+
+    return 0;
+}
