@@ -56,3 +56,107 @@ public:
     }
 };
 
+void printVector(vector<int> ans) {
+    cout << "[ ";
+
+    for (int x : ans)
+        cout << x << " ";
+
+    cout << "]\n";
+}
+
+int main() {
+
+    Solution sol;
+
+    //==============================
+    // Test Case 1
+    //      5
+    //     / \
+    //    2  -3
+    //==============================
+
+    TreeNode* root1 = new TreeNode(5);
+    root1->left = new TreeNode(2);
+    root1->right = new TreeNode(-3);
+
+    cout << "Test Case 1\n";
+    printVector(sol.findFrequentTreeSum(root1));
+
+
+    //==============================
+    // Test Case 2
+    //      5
+    //     / \
+    //    2  -5
+    //==============================
+
+    sol = Solution();
+
+    TreeNode* root2 = new TreeNode(5);
+    root2->left = new TreeNode(2);
+    root2->right = new TreeNode(-5);
+
+    cout << "Test Case 2\n";
+    printVector(sol.findFrequentTreeSum(root2));
+
+
+    //==============================
+    // Test Case 3
+    //      1
+    //     / \
+    //    1   1
+    //==============================
+
+    sol = Solution();
+
+    TreeNode* root3 = new TreeNode(1);
+    root3->left = new TreeNode(1);
+    root3->right = new TreeNode(1);
+
+    cout << "Test Case 3\n";
+    printVector(sol.findFrequentTreeSum(root3));
+
+
+    //==============================
+    // Test Case 4
+    //
+    //          4
+    //         / \
+    //        2   6
+    //       / \
+    //      1   3
+    //==============================
+
+    sol = Solution();
+
+    TreeNode* root4 = new TreeNode(4);
+    root4->left = new TreeNode(2);
+    root4->right = new TreeNode(6);
+    root4->left->left = new TreeNode(1);
+    root4->left->right = new TreeNode(3);
+
+    cout << "Test Case 4\n";
+    printVector(sol.findFrequentTreeSum(root4));
+
+
+    //==============================
+    // Test Case 5
+    //
+    //        0
+    //       / \
+    //      0   0
+    //==============================
+
+    sol = Solution();
+
+    TreeNode* root5 = new TreeNode(0);
+    root5->left = new TreeNode(0);
+    root5->right = new TreeNode(0);
+
+    cout << "Test Case 5\n";
+    printVector(sol.findFrequentTreeSum(root5));
+
+
+    return 0;
+}
