@@ -25,62 +25,64 @@ cache.get(4);       // returns 4*/
  * obj.put(key,value);
  */
 
-class LRUCache {
-    // Store key-value pairs in a doubly linked list
-    std::list<pair<int, int>> cache;
+#include <list>
+#include <unordered_map>
+#include <utility>
 
-    // Store key and an iterator to its position in the list.
-    // unordered_map<key, list<pair<key, value>>::iterator>
-    typedef unordered_map<int, list<pair<int, int>>::iterator> HashMapT;
-    HashMapT hash_map;
-    typedef HashMapT::iterator IteratorT;
-    
-    
-    void refresh(int key, int value)
-    {
-        cache.erase(hash_map[key]);
-        cache.push_front({key, value});
-        hash_map[key] = cache.begin();
-    }
-    
+class LRUCache {
+    // Front = most recently used; back = least recently used.
+    std::list<std::pair<int, int>> cache;
+    std::unordered_map<int, decltype(cache)::iterator> hash_map;
     int capacity_;
+
 public:
-    LRUCache(int capacity) {
-        capacity_ = capacity;
-        hash_map.reserve(capacity);
+    explicit LRUCache(int capacity) : capacity_(capacity) {
+        if (capacity > 0) {
+            // Insertion happens before eviction: allow one extra entry.
+            hash_map.reserve(static_cast<std::size_t>(capacity) + 1);
+        }
     }
-    
+
     int get(int key) {
-        
-        IteratorT iter = hash_map.find(key);
-        
-        if (iter != hash_map.end())
-        {
-            refresh(key, iter->second->second);
-            return iter->second->second;
+        auto it = hash_map.find(key);
+        if (it == hash_map.end()) {
+            return -1;
         }
-        
-        return -1;
+
+        cache.splice(cache.begin(), cache, it->second);
+        return it->second->second;
     }
-    
+
     void put(int key, int value) {
-        
-        IteratorT iter = hash_map.find(key);
-        
-        if (iter != hash_map.end())
-        {
-            refresh(key, value);
+        if (capacity_ <= 0) {
+            return;
         }
-        else
-        {
-            cache.push_front({key, value});
-            hash_map[key] = cache.begin();
-            
-            if (hash_map.size() > capacity_)
-            {
-                hash_map.erase(cache.back().first);
-                cache.pop_back();
-            }
+
+        auto [it, inserted] =
+            hash_map.try_emplace(key, cache.end());
+
+        if (!inserted) {
+            // Existing key: update value and mark most recently used.
+            it->second->second = value;
+            cache.splice(cache.begin(), cache, it->second);
+            return;
+        }
+
+        // New key: create its list node.
+        try {
+            cache.emplace_front(key, value);
+        } catch (...) {
+            // Remove the placeholder if list allocation fails.
+            hash_map.erase(it);
+            throw;
+        }
+
+        it->second = cache.begin();
+
+        if (hash_map.size() >
+            static_cast<std::size_t>(capacity_)) {
+            hash_map.erase(cache.back().first);
+            cache.pop_back();
         }
     }
 };
