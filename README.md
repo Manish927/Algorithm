@@ -32,6 +32,7 @@ Solutions are available in C++17 and Java
 |Meetings rooms II|[253](LC253.java)|Min Heap|
 |Cheapest Flights Within K Stops|[787](LC787.cpp)|BFS|
 |Snapshot Array|[1146](LC1146.cpp)|Array with binary search|
+|Time based Key-Value Store|[981](LC981.cpp)|Array with binary search|
 |Serialize and Deserialize Binary Tree|[297](LC297.cpp)|Queue|
 |Design Circular Queue|[622](LC622.cpp)|array|
 |Fibonacci Number|[509](LC509.cpp)|Iterative top down|
