@@ -25,59 +25,54 @@ snapshotArr.get(0,0);  // Get the value of array[0] with snap_id = 0, return 5
 
 
 
+#include <vector>
+
 class SnapshotArray {
-    std::vector<std::vector<pair<int, int>>> snapShotBuffer;
-    int snap_id = 0;
+    struct Record {
+        int snapshotId;
+        int value;
+    };
+
+    std::vector<std::vector<Record>> history_;
+    int currentSnapshotId_ = 0;
+
 public:
-    SnapshotArray(int length) 
-    {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        snapShotBuffer.resize(length);
-    }
-    
-    void set(int index, int val) 
-    {
-        auto& idx_record = snapShotBuffer[index];
-        
-        if (!idx_record.empty() && idx_record.back().second == snap_id)
-        {
-            idx_record.back().first = val;
+    explicit SnapshotArray(int length) : history_(length) {}
+
+    void set(int index, int value) {
+        auto& records = history_[index];
+
+        // Keep only the latest update within the current snapshot.
+        if (!records.empty() &&
+            records.back().snapshotId == currentSnapshotId_) {
+            records.back().value = value;
+        } else {
+            records.push_back({currentSnapshotId_, value});
         }
-        else
-            idx_record.push_back({val, snap_id});
     }
-    
-    int snap() 
-    {
-        snap_id++;
-        return snap_id - 1;
+
+    int snap() {
+        return currentSnapshotId_++;
     }
-    
-    int get(int index, int snap_id)
-    {
-        auto& idx_recs = snapShotBuffer[index];
-        
-        if (idx_recs.empty())
-            return 0;
-        
-        if (snap_id < idx_recs[0].second)
-            return 0;
-        
-        
-        int left = 0;
-        int right = idx_recs.size();
-        
-        while (right - left > 1)
-        {
-            int middle = (left + right) / 2;
-            
-            if (idx_recs[middle].second <= snap_id)
-                left = middle;
-            else
+
+    int get(int index, int snapshotId) const {
+        const auto& records = history_[index];
+
+        // Find the first record with snapshotId > the requested ID.
+        std::size_t left = 0;
+        std::size_t right = records.size();
+
+        while (left < right) {
+            const auto middle = left + (right - left) / 2;
+
+            if (records[middle].snapshotId <= snapshotId) {
+                left = middle + 1;
+            } else {
                 right = middle;
+            }
         }
-        
-        return idx_recs[left].first;
+
+        // The preceding record is the latest qualifying update.
+        return left == 0 ? 0 : records[left - 1].value;
     }
 };
